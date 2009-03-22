@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Yaploud" 
+               author="Alvin Abad" 
+               author_email="alvinabad@alumni.cmu.edu" 
+               description="Yaploud OpenSocial Chat Application">
+    <Require feature="opensocial-0.8" />
+    <Require feature="dynamic-height" />
+  </ModulePrefs>
+  <Content type="html" view="canvas,profile">
+  <![CDATA[
+
+<iframe src="http://ning.yaploud.com/chat/chat_window.php?url=http://alvinabad.ning.com&title=http://alvinabad.ning.com"
+        scrolling="no" style="width:400px; height:350px" frameborder="1">
+</iframe>
+
+<script type="text/javascript">
+  gadgets.window.adjustHeight();
+</script>
+
+  ]]>
+  </Content>
+</Module>
+
+

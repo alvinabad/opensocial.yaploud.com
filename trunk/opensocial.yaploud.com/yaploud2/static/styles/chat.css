@@ -1,0 +1,128 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	margin-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-right: 8px;
+    padding: 0;
+    background-color: white;
+}
+	
+div#main {
+    width: 100%;
+    height: 98%;
+    /*min-height: 400px;*/
+    /*min-width: 400px;*/
+    overflow: auto;
+    /*border: 1px solid red;*/
+    padding: 2px;
+    font-family: arial, courier-new, serif;
+    font-size: 13px;
+}
+
+div#header {
+    overflow: auto;
+    /*border: 1px solid red;*/
+    padding: 2px;
+    margin: 2px;
+}
+
+div#messages {
+    width: 350px;
+    height: 200px;
+    /*min-height: 200px;*/
+    float: left;
+    overflow: auto;
+    border: 1px solid green;
+    padding: 2px;
+    margin: 2px;
+    color: #383838;
+}
+
+div#messages .msg {
+	color: #383838;
+    margin-top: 10px;
+}
+	
+div#messages .sender {
+	color: #8B0000;
+}
+
+div#messages .msg_time {
+	font-size: 9px;
+	color: gray;
+	float: right;
+}
+div#users {
+    width: 100px;
+    height: 200px;
+    /*min-height: 200px;*/
+    float: left;
+    overflow: auto;
+    border: 1px solid green;
+    padding: 2px;
+    margin: 2px;
+    font-family: arial, courier-new, serif;
+}
+
+div#text {
+    width: 350px;
+    height: 50px;
+    clear: both;
+    float: left;
+    overflow: hidden;
+    border: 1px solid green;
+    padding: 0;
+    margin: 2px;
+}
+
+div#separator_div {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
+	
+div#footer {
+    float: left;
+    clear: both;
+    overflow: auto;
+    /*border: 1px solid cyan; */
+    padding: 2px;
+    margin: 2px;
+}
+
+textarea#text_message {
+	margin: 0;
+	padding: 2px;
+	border: 0;
+	width: 98%;
+	height: 100%;
+    max-height: 50px;
+    overflow: auto;
+}
+
+div.username {
+	background-color: none;
+}
+
+.striped {
+	background-color:#E3E4FA;
+}
+
+img#yaploud_logo {
+	border: none;
+}
+
+div#controls {
+	float: left:
+    clear: both;
+	margin: 0;
+	padding: 2px;
+}
+div#user_greeting {
+	float: left:
+    clear: both;
+	margin: 0;
+	padding: 2px;
+}

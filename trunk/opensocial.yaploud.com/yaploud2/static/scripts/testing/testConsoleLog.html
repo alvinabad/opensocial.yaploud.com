@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type="text/javascript">
+	    DEBUG = false;
+
+	    if (!DEBUG && console) {
+                firebug.overrideConsole();
+	    }
+	    
+if (!console) {
+    var console = {};
+    console.log = function(msg) {
+        return false;
+    };
+}
+	    
+    function demo() {
+        // do something          
+        console.log("I'm here!");
+        // do something          
+    }
+    </script>
+  </head>
+<body>
+  <h1>Firebug's console.log() Demo</h1>
+  <button onclick="demo();">Firebug console.log() demo</button>
+</body>
+</html>
+
