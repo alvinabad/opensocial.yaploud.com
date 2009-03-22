@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Module><ModulePrefs author_email="alvin.abad@yaploud.com" title="Yaploud"><Require feature="opensocial-0.8"/></ModulePrefs><Content view="canvas" type="html">
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://localhost:8080/chat_os/canvas.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+gadgets.util.registerOnLoadHandler(init);
+&lt;/script&gt;
+
+&lt;!-- The code for Canvas view is here. --&gt;
+&lt;div&gt;Canvas view for Yaploud.&lt;/div&gt;
+
+  </Content><Content view="profile" type="html">
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://localhost:8080/chat_os/profile.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+gadgets.util.registerOnLoadHandler(init);
+&lt;/script&gt;
+
+&lt;!-- The code for Profile view is here. --&gt;
+&lt;div&gt;Profile view for Yaploud.&lt;/div&gt;
+
+  </Content><Content view="home" type="html">
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://localhost:8080/chat_os/home.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+gadgets.util.registerOnLoadHandler(init);
+&lt;/script&gt;
+
+&lt;!-- The code for Home view is here. --&gt;
+&lt;div&gt;Home view for Yaploud.&lt;/div&gt;
+
+  </Content></Module>

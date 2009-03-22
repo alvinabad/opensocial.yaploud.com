@@ -1,0 +1,151 @@
+<html>
+<body>
+<div id="gadget_div"></div>
+
+<script type="text/javascript">
+
+
+var Viewer = {};
+Viewer.getViewer = function () {
+    var req = opensocial.newDataRequest();
+    var opt_params = {};
+    req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.VIEWER_FRIENDS,
+                            opt_params), "viewer_friends");
+    req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER),
+                                  "viewer");
+    req.send(function(data) {
+        if (data.get("viewer").hadError()) {
+            output("Error getting viewer");
+            return;
+        }
+        
+        Viewer.data = data.get("viewer").getData();
+        Viewer.name = Viewer.data.getDisplayName();
+    
+        if (data.get("viewer_friends").hadError()) {
+            output("Error getting viewer_friends");
+            return;
+        }
+        
+        Viewer.friends = data.get("viewer_friends").getData();
+        Viewer.profileUrl = Viewer.data.getField(opensocial.Person.Field.PROFILE_URL);
+        initYaploud();
+    });
+};
+
+var Owner = {};
+Owner.getOwner = function () {
+    var req = opensocial.newDataRequest();
+    var opt_params = {};
+    req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.OWNER),
+                                  "owner");
+    req.add(req.newFetchPeopleRequest(opensocial.DataRequest.Group.OWNER_FRIENDS,
+                            opt_params), "owner_friends");
+
+    req.send(function(data) {
+        if (data.get("owner").hadError()) {
+            output("Error getting owner");
+            return;
+        }
+        Owner.data = data.get("owner").getData();
+        Owner.name = Owner.data.getDisplayName();
+        
+        if (data.get("owner_friends").hadError()) {
+            output("Error getting owner");
+            return;
+        }
+        Owner.friends = data.get("owner_friends").getData();
+        Owner.profileUrl = Owner.data.getField(opensocial.Person.Field.PROFILE_URL);
+        //output("OWNER: " + Owner.name);
+        //output("OWNER PROFILE URL: " + Owner.profileUrl);
+        Owner.friends.each(function(friend) {
+            var f = friend.getDisplayName();
+            //output(f);
+            //display(f);
+        });
+    });
+}
+
+function display(msg) {
+    jQuery("#dom_handle").append("<div>" + msg + "</div>");
+}
+
+function clearDisplay() {
+    jQuery("#dom_handle").html("");
+}
+
+function initYaploud() {
+    var Yaploud = {};
+    Yaploud.host = "http://yaploud2.alvin.gotdns.org";
+    //Yaploud.host = "http://yaploud2:8000";
+    Yaploud.chaturi = "/chat/";
+    Yaploud.iframe_width = "500px";
+    Yaploud.iframe_height = "500px";
+    Yaploud.gadget_div = "gadget_div";
+
+    if (document.getElementById("dom_handle")) {
+        Yaploud.gadget_div = "dom_handle";
+    }
+
+    if (!Viewer.name) {
+        Yaploud.viewer = "You";
+    }
+    else {
+        Yaploud.viewer = Viewer.name;
+    }
+
+    if (!Viewer.profileUrl) {
+        Yaploud.chatroom = "http://yaploud.ning.com";
+    }
+    else {
+        Yaploud.chatroom = Viewer.profileUrl;
+    }
+    
+    Yaploud.chatroom = encodeURIComponent(Yaploud.chatroom);
+    Yaploud.viewer = encodeURIComponent(Yaploud.viewer);
+    Yaploud.params = "?cr=" + Yaploud.chatroom + "&viewer=" + Yaploud.viewer;
+    gadget_div = document.getElementById(Yaploud.gadget_div);
+    var code = '<iframe id="Yaploud_iframe" class="Yaploud_iframe" src="' + 
+               Yaploud.host + Yaploud.chaturi + Yaploud.params + '"' +
+               ' scrolling="no" style="width:' + Yaploud.iframe_width +
+               '; height:' + Yaploud.iframe_height +
+               ';" frameborder="0"></iframe>';
+    gadget_div.innerHTML = code;
+    //console.log(code);
+}
+
+function includeJavascript(src) {
+    if (document.createElement && document.getElementsByTagName) {
+        var head_tag = document.getElementsByTagName('head')[0];
+        var script_tag = document.createElement('script');
+        script_tag.setAttribute('type', 'text/javascript');
+        script_tag.setAttribute('src', src);
+        head_tag.appendChild(script_tag);
+    }
+}
+includeJavascript("http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js");
+
+
+function init() {
+    if (location.host.indexOf("ning") == -1) {
+        initYaploud();
+    }
+    else {
+        var ENV = {};
+        ENV.domainName = opensocial.getEnvironment().getDomain();
+        cls();
+        //clearDisplay();
+        Viewer.getViewer();
+        Owner.getOwner();
+        output("DOMAINNAME: " + ENV.domainName);
+    }
+}
+
+init();
+
+//gadgets.util.registerOnLoadHandler(init);
+
+</script>
+
+</body>
+</html>

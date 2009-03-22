@@ -1,0 +1,49 @@
+	    
+<html>
+  <head>
+    <script type="text/javascript">
+        DEBUG = true;
+
+	//firebug.overrideConsole();
+
+        mylogger = {};
+        mylogger.log = function(msg) {
+            return false;
+        };
+
+        if (window.DEBUG && console) {
+		mylogger = console;
+		window.console = null;
+	}
+
+        function demo() {
+            // I did lots of things here
+            mylogger.log("I'm here!");
+            // and a lot more
+        }
+    </script>
+  </head>
+<body>
+  <h1>Firebug's console.log() Demo</h1>
+  <button onclick="demo();">Firebug console.log() demo</button>
+	    
+  <script type="text/javascript">
+	  x = function() {
+	      this.x = "zzzzz";    
+	  };
+
+document.writeln("<br/>");
+document.writeln("<br/>");
+hello = new x();
+
+    document.writeln(hello.x);
+document.writeln("<br/>");
+
+    hello = 7;
+    document.writeln(hello);
+document.writeln("<br/>");
+    </script>
+
+</body>
+</html>
+

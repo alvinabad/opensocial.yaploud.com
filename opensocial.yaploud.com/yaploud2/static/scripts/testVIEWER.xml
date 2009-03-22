@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Test Viewer" 
+               author="Alvin Abad" 
+               author_email="alvin.abad@yaploud.com" 
+               description="Yaploud OpenSocial Chat Application">
+    <Require feature="opensocial-0.8" />
+    <Require feature="dynamic-height" />
+  </ModulePrefs>
+    
+  <Content type="html" >
+  <![CDATA[
+    <script type="text/javascript" 
+     src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
+     
+    <script type="text/javascript">
+    
+    function getViewer() {
+        var req = opensocial.newDataRequest();
+        req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER),
+                                      "viewer");
+        req.send(function(data) {
+            var viewer = data.get("viewer").getData();
+            var viewer_name = viewer.getDisplayName();
+            var domainname = opensocial.getEnvironment().getDomain();
+            var profile_url = viewer.getField(opensocial.Person.Field.PROFILE_URL);
+            //domainname = opensocial.Environment;
+            //var webpage = viewer.getField(opensocial.Organization.Field.WEBPAGE);
+            //var address = viewer.getField(opensocial.URL.Field.ADDRESS);
+            
+            jQuery("#view_div").append("<b>[" + viewer_name + "]</b>");
+            jQuery("#view_div").append("<br/>"+ domainname);
+            jQuery("#view_div").append("<br/>"+ profile_url);
+            //jQuery("#view_div").append("<br/>"+ address);
+            //jQuery("#view_div").append("<br/>"+ webpage);
+        });
+    }
+    gadgets.util.registerOnLoadHandler(getViewer);
+    //gadgets.window.adjustHeight();
+    
+    </script>
+
+    <!-- The DIV view is here. -->
+    <div id="view_div"></div>
+  ]]>
+  </Content>
+</Module>

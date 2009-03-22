@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <ModulePrefs title="Yaploud" author_email="alvin.abad@yaploud.com">
+    <Require feature="opensocial-0.8" />
+  </ModulePrefs>
+  <Content type="html" view="canvas"><![CDATA[
+
+<script type="text/javascript" src="http://localhost:8080/chat_os/canvas.js"></script>
+
+<script type="text/javascript">
+gadgets.util.registerOnLoadHandler(init);
+</script>
+
+<!-- The code for Canvas view is here. -->
+<div>Canvas view for Yaploud.</div>
+
+  ]]></Content>
+  <Content type="html" view="profile"><![CDATA[
+
+<script type="text/javascript" src="http://localhost:8080/chat_os/profile.js"></script>
+
+<script type="text/javascript">
+gadgets.util.registerOnLoadHandler(init);
+</script>
+
+<!-- The code for Profile view is here. -->
+<div>Profile view for Yaploud.</div>
+
+  ]]></Content>
+  <Content type="html" view="home"><![CDATA[
+
+<script type="text/javascript" src="http://localhost:8080/chat_os/home.js"></script>
+
+<script type="text/javascript">
+gadgets.util.registerOnLoadHandler(init);
+</script>
+
+<!-- The code for Home view is here. -->
+<div>Home view for Yaploud.</div>
+
+  ]]></Content>
+</Module>
