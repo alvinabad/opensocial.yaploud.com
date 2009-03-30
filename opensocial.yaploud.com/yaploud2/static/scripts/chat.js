@@ -497,9 +497,10 @@ Chat.init = function () {
         Chat.window.popout = true;
     }
     
-    if (Chat.window.popout) {
+    //if (Chat.window.popout) {
+    console.log("resize window");
         Chat.resizeChatWindow();
-    }
+    //}
     
     // establish listeners
     jQuery(window).resize(Chat.resizeChatWindow);
