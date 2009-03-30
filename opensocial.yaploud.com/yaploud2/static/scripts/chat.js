@@ -498,7 +498,6 @@ Chat.init = function () {
     }
     
     //if (Chat.window.popout) {
-    console.log("resize window");
         Chat.resizeChatWindow();
     //}
     
