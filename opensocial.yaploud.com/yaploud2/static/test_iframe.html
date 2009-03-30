@@ -1,0 +1,64 @@
+<html>
+<head>
+  <title>Yaploud2 in an IFrame</title>
+    
+<script type="text/javascript"
+        src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.min.js"></script>
+        
+<script type="text/javascript">
+  function initYaploud(viewer_name, viewer_profile_url) {
+    var Yaploud = {};
+    Yaploud.host = "http://" + window.location.host;
+    Yaploud.chaturi = "/chat/";
+    Yaploud.iframe_width = "520px";
+    Yaploud.iframe_height = "500px";
+    Yaploud.gadget_div = "view_div";
+
+    if (document.getElementById("dom_handle")) {
+        Yaploud.gadget_div = "dom_handle";
+    }
+
+    if (viewer_name) {
+        Yaploud.viewer = viewer_name;
+    }
+    else {
+        Yaploud.viewer = "You";
+    }
+
+    if (viewer_profile_url) {
+        Yaploud.chatroom = viewer_profile_url;
+    }
+    else {
+        Yaploud.chatroom = "http://yaploud.ning.com";
+    }
+    
+    Yaploud.chatroom = encodeURIComponent(Yaploud.chatroom);
+    Yaploud.viewer = encodeURIComponent(Yaploud.viewer);
+    Yaploud.params = "?cr=" + Yaploud.chatroom + "&viewer=" + Yaploud.viewer;
+    var gadget_div = document.getElementById(Yaploud.gadget_div);
+    var code = '<iframe id="Yaploud_iframe" class="Yaploud_iframe" src="' + 
+               Yaploud.host + Yaploud.chaturi + Yaploud.params + '"' +
+               ' scrolling="no" style="width:' + Yaploud.iframe_width +
+               '; height:' + Yaploud.iframe_height +
+               ';" frameborder="2"></iframe>';
+    gadget_div.innerHTML = code;
+  }
+    
+  function init() {
+  }
+
+  jQuery(document).ready(function(){
+    initYaploud("alvz");
+  });
+  
+</script>
+  
+</head>
+
+<body>
+
+<div id="view_div" style="width:720px; height:500px; margin:0; padding 0;"></div>
+
+</body>
+
+</html>
