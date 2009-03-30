@@ -11,10 +11,10 @@
     <Require feature="dynamic-height" />
   </ModulePrefs>
     
-  <Content type="html" >
+  <Content type="html" view="ning.main,profile">
 <![CDATA[
     <!-- The DIV view is here. -->
-    <div id="view_div" style="width:500px; height:400px; margin:0; padding 0;"></div>
+    <div id="view_div" style="width:492px; height:400px; margin:0; padding 0;"></div>
     
 <script type="text/javascript">
     
@@ -22,7 +22,7 @@ function initYaploud(viewer_name, viewer_profile_url) {
     var Yaploud = {};
     Yaploud.host = "http://opensocial.yaploud.com";
     Yaploud.chaturi = "/chat/";
-    Yaploud.iframe_width = "500px";
+    Yaploud.iframe_width = "492px";
     Yaploud.iframe_height = "400px";
     Yaploud.gadget_div = "view_div";
 
@@ -79,4 +79,75 @@ gadgets.util.registerOnLoadHandler(init);
 
 ]]>
 </Content>
+
+  <Content type="html" view="canvas">
+<![CDATA[
+    <!-- The DIV view is here. -->
+    <div id="view_div" style="width:720px; height:500px; margin:0; padding 0;"></div>
+    
+<script type="text/javascript">
+    
+function initYaploud(viewer_name, viewer_profile_url) {
+    var Yaploud = {};
+    Yaploud.host = "http://opensocial.yaploud.com";
+    Yaploud.chaturi = "/chat/";
+    Yaploud.iframe_width = "720px";
+    Yaploud.iframe_height = "500px";
+    Yaploud.gadget_div = "view_div";
+
+    if (document.getElementById("dom_handle")) {
+        Yaploud.gadget_div = "dom_handle";
+    }
+
+    if (viewer_name) {
+        Yaploud.viewer = viewer_name;
+    }
+    else {
+        Yaploud.viewer = "You";
+    }
+
+    if (viewer_profile_url) {
+        Yaploud.chatroom = viewer_profile_url;
+    }
+    else {
+        Yaploud.chatroom = "http://yaploud.ning.com";
+    }
+    
+    Yaploud.chatroom = encodeURIComponent(Yaploud.chatroom);
+    Yaploud.viewer = encodeURIComponent(Yaploud.viewer);
+    Yaploud.params = "?cr=" + Yaploud.chatroom + "&viewer=" + Yaploud.viewer;
+    var gadget_div = document.getElementById(Yaploud.gadget_div);
+    var code = '<iframe id="Yaploud_iframe" class="Yaploud_iframe" src="' + 
+               Yaploud.host + Yaploud.chaturi + Yaploud.params + '"' +
+               ' scrolling="no" style="width:' + Yaploud.iframe_width +
+               '; height:' + Yaploud.iframe_height +
+               ';" frameborder="0"></iframe>';
+    gadget_div.innerHTML = code;
+}
+    
+function init() {
+    var req = opensocial.newDataRequest();
+    req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.VIEWER),
+                                      "viewer");
+    req.add(req.newFetchPersonRequest(opensocial.IdSpec.PersonId.OWNER),
+                                      "owner");
+    req.send(function(data) {
+        var viewer = data.get("viewer").getData();
+        var owner = data.get("owner").getData();
+        var viewer_name = viewer.getDisplayName();
+        var domainname = opensocial.getEnvironment().getDomain();
+        var profile_url = owner.getField(opensocial.Person.Field.PROFILE_URL);
+        initYaploud(viewer_name, profile_url);
+    });
+    gadgets.window.adjustHeight();
+}
+
+gadgets.util.registerOnLoadHandler(init);
+    
+</script>
+
+]]>
+</Content>
+
+
 </Module>
