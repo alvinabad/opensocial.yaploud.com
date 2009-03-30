@@ -1,0 +1,5 @@
+1. Create your own settings.py, e.g., settings-mymac.py
+2. Create a symlink to your settings.py:
+    settings.py -> settings-mymac.py
+
+   ln -s settings-mymac.py settings.py
