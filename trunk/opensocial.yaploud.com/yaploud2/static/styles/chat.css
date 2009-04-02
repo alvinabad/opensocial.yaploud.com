@@ -17,8 +17,8 @@ div#main {
     overflow: auto;
     /*border: 1px solid red;*/
     padding: 2px;
-    font-family: arial, courier-new, serif;
-    font-size: 13px;
+    font-family: 'Lucida Grande', Verdana, Arial, courier-new, sans-serif;
+    font-size: 12px;
 }
 
 div#header {
@@ -63,7 +63,6 @@ div#users {
     border: 1px solid green;
     padding: 2px;
     margin: 2px;
-    font-family: arial, courier-new, serif;
 }
 
 div#text {
@@ -103,7 +102,7 @@ textarea#text_message {
 }
 
 div.username {
-	background-color: none;
+	/*background-color: none;*/
 }
 
 .striped {
@@ -115,13 +114,13 @@ img#yaploud_logo {
 }
 
 div#controls {
-	float: left:
+	float: left;
     clear: both;
 	margin: 0;
 	padding: 2px;
 }
 div#user_greeting {
-	float: left:
+	float: left;
     clear: both;
 	margin: 0;
 	padding: 2px;
