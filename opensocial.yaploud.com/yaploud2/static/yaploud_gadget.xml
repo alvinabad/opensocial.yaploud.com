@@ -5,9 +5,9 @@
                author_email="yaploud@yaploud.com"
                thumbnail="http://opensocial.yaploud.com/images/yaploud_logo.gif" 
                description="YapLoud chat enables members of your Ning network to chat with each other">
-    <ning:screenshot view="profile">http://opensocial.yaploud.com/images/ningscreenshot.png</ning:Screenshot>
-    <ning:screenshot view="tab">http://opensocial.yaploud.com/images/ningscreenshot.png</ning:Screenshot>
-    <ning:screenshot view="ning.main">http://opensocial.yaploud.com/images/ningscreenshot.png</ning:Screenshot>
+    <ning:Screenshot view="profile">http://opensocial.yaploud.com/images/ningscreenshot.png</ning:Screenshot>
+    <ning:Screenshot view="tab">http://opensocial.yaploud.com/images/ningscreenshot.png</ning:Screenshot>
+    <ning:Screenshot view="ning.main">http://opensocial.yaploud.com/images/ningscreenshot.png</ning:Screenshot>
     <Require feature="opensocial-0.8" />
     <Require feature="dynamic-height" />
   </ModulePrefs>
