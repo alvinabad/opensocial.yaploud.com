@@ -9,25 +9,12 @@ from django.utils import simplejson
 from datetime import datetime
 import os
 
-#from models import ChatMessages, ChatRoom
 from models import ChatRoom
 from ChatMessages import ChatMessages
 from ChatRoom import ChatRoom
 
-#from util import logger as log
 import settings
 import inspect
-
-import logging
-#logging.basicConfig()
-log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
-formatter = logging.Formatter("[%(asctime)s] %(levelname)s: %(name)s,%(lineno)d - %(message)s")
-ch = logging.StreamHandler()
-ch.setFormatter(formatter)
-ch.setLevel(logging.DEBUG)
-log.addHandler(ch)
-
 
 def index(request):
     try:
@@ -46,6 +33,8 @@ def index(request):
     except:
         popout = "false"   # this is for JavaScript variable
         
+        
+    request.session['username'] = viewer
     info = {}
     info['title'] = "Yaploud Chat Room - " + roomname
     info['viewer'] = viewer
