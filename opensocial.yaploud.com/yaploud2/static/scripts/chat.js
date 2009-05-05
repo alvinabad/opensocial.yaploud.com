@@ -482,14 +482,6 @@ Chat.init = function () {
     Chat.getMessages();
     Chat.startPolling();
     
-    // Set focus to the textarea
-    if (Chat.isUserGuest) {
-        jQuery("#input_username").focus();
-    }
-    else {
-        jQuery("#text_message").focus();
-    }
-    
     if (Chat.window.popout == "" || Chat.window.popout == "false") {
         Chat.window.popout = false;
     }
